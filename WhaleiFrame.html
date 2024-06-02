@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>U.S Whale Strandings</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+    </head>
+<body>
+    <div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoicGFya2VyanVuZ2ciLCJhIjoiY2x1bGhvcGJrMTQ0dDJqbnVreXAxZjg4dSJ9.YmoK9NNUb-0N-YuvNho8pg';
+    
+    // Set bounds
+    var bounds = [
+		   [-179, 0], // Southwest coordinates
+		   [-50, 75] // Northeast coordinates 
+		];
+    // Initialize map
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v10',
+        center: [-123, 43],
+        zoom: 1,
+        minZoom: 1, // pick your own
+        maxBounds: bounds // Sets bounds from variable above
+    });
+      // Map's On 'load' function.
+    map.on('load', function() {
+        map.addSource('physmacrocephalus', {
+                type: 'geojson',
+                data: '/GeoJSONs/PhysMacrocephalus.geojson'
+           });
+            // Add layer to display the GeoJSON data
+           map.addLayer({
+               id: 'physmacrocephalus-dist',
+               type: 'fill',
+               source: 'physmacrocephalus',
+               paint: {
+                 'fill-color': 'rgba(0,0,255,0.5)'
+               }
+            });
+            map.addSource('balmusculus', {
+                type: 'geojson',
+                data: './GeoJSONs/BalMusculus.geojson'
+            });
+            map.addLayer({
+                id: 'balmusculus-dist',
+                type: 'fill',
+                source: 'balmusculus',
+                paint: {
+                    'fill-color': 'rgba(175,238,238,0.5)'
+                }
+            });
+            map.addSource('balmysticetus', {
+                type: 'geojson',
+                data: './GeoJSONs/BalMysticetus.geojson'
+            });
+            map.addLayer({
+                id: 'balmysticetus-dist',
+                type: 'fill',
+                source: 'balmysticetus',
+                paint: {
+                    'fill-color': 'rgba(100,149,237,0.5)'
+                }
+            });
+            map.addSource('balphysalus', {
+                type: 'geojson',
+                data: './GeoJSONs/BalPhysalus.geojson'
+            });
+            map.addLayer({
+                id: 'balphysalus-dist',
+                type: 'fill',
+                source: 'balphysalus',
+                paint: {
+                   'fill-color': 'rgba(147,112,219,0.5)'
+                }
+            });
+           map.addSource('eschrobustus', {
+               type: 'geojson',
+               data: './GeoJSONs/EschRobustus.geojson'
+            });
+            map.addLayer({
+                id: 'eschrobustus-dist',
+                type: 'fill',
+                source: 'eschrobustus',
+                paint: {
+                    'fill-color': 'rgba(64,224,208,0.5)'
+                }
+            });
+            map.addSource('eubglacialis', {
+               type: 'geojson',
+               data: './GeoJSONs/EubGlacialis.geojson'
+           });
+            map.addLayer({
+                id: 'eubglacialis-dist',
+                type: 'fill',
+               source: 'eubglacialis',
+                paint: {
+                   'fill-color': 'rgba(143,100,143,0.5)'
+                }
+            });
+
+    });
+    </script>
+
+</body>
+</html>
