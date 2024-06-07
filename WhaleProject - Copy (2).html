@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>U.S. Whale Strandings</title>
+
+    
+    <!-- JavaScript Libraries-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js"></script>
+
+  
+    <!-- CSS Links -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" rel="stylesheet" />
+    <link href="WhaleProject%20-%20Copy%20(2).css" rel="stylesheet" />
+         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <!--  Div for Title at top of webpage   -->
+    <div class="site-header">
+        <strong class="site-title">Reported Whale Strandings on U.S. Coasts (2005-2015)</strong>
+    </div>
+    <div class="descriptionPanel" id="descriptionPanel" style="height: 100%;">
+     <span onClick=panelSelect() id="glyph" class="chevron glyphicon glyphicon-chevron-down"></span>
+         <div class="image-container">
+            <div>
+                <img src="WhalePhotos/minke-whale.png" alt="Minke Whale" onclick="playSound('minke-whale.mp3')">
+                <p><a href="https://www.fisheries.noaa.gov/species/minke-whale" target="_blank">Minke Whale</a></p>
+            </div>
+            <div>
+                <img src="WhalePhotos/bowhead-whale1.png" alt="Bowhead Whale" onclick="playSound('bowhead-whale.mp3')">
+                <p><a href="https://www.fisheries.noaa.gov/species/bowhead-whale" target="_blank">Bowhead Whale</a></p>
+            </div>
+            <div>
+                <img src="WhalePhotos/brydes-whale1.png" alt="Bryde's Whale" onclick="playSound('brydes-whale.mp3')">
+                <p><a href="https://www.fisheries.noaa.gov/species/brydes-whale" target="_blank">Bryde's Whale</a></p>
+            </div>
+            <div>
+                <img src="WhalePhotos/gray-whale.png" alt="Gray Whale" onclick="playSound('gray-whale.mp3')">
+                <p><a href="https://www.fisheries.noaa.gov/species/gray-whale" target="_blank">Gray Whale</a></p>
+            </div>
+            <div>
+                <img src="WhalePhotos/humpback-whale1.png" alt="Humpback Whale" onclick="playSound('humpback-whale.mp3')">
+                <p><a href="https://www.fisheries.noaa.gov/species/humpback-whale" target="_blank">Humpback Whale</a></p>
+            </div>
+            <div>
+                <img src="WhalePhotos/killer-whale.png" alt="Killer Whale" onclick="playSound('killer-whale.mp3')">
+                <p><a href="https://www.fisheries.noaa.gov/species/killer-whale" target="_blank">Killer Whale</a></p>
+            </div>
+            <div>
+                <img src="WhalePhotos/northatlanticright-whale1.png" alt="North Atlantic Right Whale" onclick="playSound('northatlanticright-whale.mp3')">
+                <p><a href="https://www.fisheries.noaa.gov/species/north-atlantic-right-whale" target="_blank">North Atlantic Right Whale</a></p>
+            </div>
+            <div>
+                <img src="WhalePhotos/sei-whale.png" alt="Sei Whale" onclick="playSound('sei-whale.mp3')">
+                <p><a href="https://www.fisheries.noaa.gov/species/sei-whale" target="_blank">Sei Whale</a></p>
+            </div>
+            <div>
+                <img src="WhalePhotos/sperm-whale.png" alt="Sperm Whale"  onclick="playSound('sperm-whale.mp3')">
+                <p><a href="https://www.fisheries.noaa.gov/species/sperm-whale" target="_blank">Sperm Whale</a></p>
+            </div>
+            <div>
+                <img src="WhalePhotos/fin-whale1.png" alt="Fin Whale" onclick="playSound('fin-whale.mp3')">
+                <p><a href="https://www.fisheries.noaa.gov/species/fin-whale" target="_blank">Fin Whale</a></p>
+            </div>
+            <div>
+                <img src="WhalePhotos/blue-whale1.png" alt="Blue Whale" onclick="playSound('blue-whale.mp3')">
+                <p><a href="https://www.fisheries.noaa.gov/species/blue-whale" target="_blank">Blue Whale</a></p>
+            </div>
+         </div>
+         <h4>Click a whale to hear its vocalizations. Find more information on each species by clicking on its name.</h4>
+      </div>
+    <div class="map-container cell medium-auto large-order-2">
+             <!--  ADD iframe here, inside the versitile layout's map container (VI.2.)   -->
+              	<iframe src="WhaleiFrame%20-%20Copy%20(2).html" title="Map"></iframe>
+
+    </div>
+    <script>
+       var state = { panelOpen: true };
+    <!-- add interaction to legend -->
+      function panelSelect(e){
+        if(state.panelOpen){
+          document.getElementById('descriptionPanel').style.height = '26px';
+          document.getElementById('glyph').className = "chevron glyphicon glyphicon-chevron-up";
+          state.panelOpen = false;
+        } else {
+          document.getElementById('descriptionPanel').style.height = '100%';
+          document.getElementById('glyph').className = "chevron glyphicon glyphicon-chevron-down";
+          state.panelOpen = true;
+        }
+      }
+        var currentlyPlaying = null;
+        function playSound(soundFileName) {
+        if (currentlyPlaying) {
+            currentlyPlaying.pause();}
+        var audio = new Audio('WhaleSounds/' + soundFileName);
+        audio.play();
+        currentlyPlaying = audio;
+}
+        // Add your legend items dynamically here
+        var legend = document.getElementById('legend');
+        var fillLayers = [
+        { id: 'physmacrocephalus-dist', name: 'Sperm Whale', color: 'rgba(211, 180, 132,0.5)', type: 'fill' },
+        { id: 'balmusculus-dist', name: 'Blue Whale', color: 'rgba(180, 151, 231,0.5)', type: 'fill' },
+        { id: 'balmysticetus-dist', name: 'Bowhead Whale', color: 'rgba(139, 224, 164,0.5)', type: 'fill' },
+        { id: 'balphysalus-dist', name: 'Fin Whale', color: 'rgba(201, 219, 116,0.5)', type: 'fill' },
+        { id: 'eschrobustus-dist', name: 'Gray Whale', color: 'rgba(254, 136, 177,0.5)', type: 'fill' },
+        { id: 'eubglacialis-dist', name: 'North Atlantic Right Whale', color: 'rgba(158, 185, 243,0.5)', type: 'fill' },
+        { id: 'balacutorostrata-dist', name: 'Minke Whale', color: 'rgba(135, 197, 95,0.5)', type: 'fill' },
+        { id: 'balborealis-dist', name: 'Sei Whale', color: 'rgba(220, 176, 242,0.5)', type: 'fill' },
+        { id: 'baledeni-dist', name: 'Brydes Whale', color: 'rgba(248, 156, 116,0.5)', type: 'fill' },
+        { id: 'megnovaeangliae-dist', name: 'Humpback Whale', color: 'rgba(246, 207, 113,0.5)', type: 'fill' },
+        { id: 'orcorca-dist', name: 'Killer Whale', color: 'rgba(102, 197, 204, 0.5)', type: 'fill' },
+    ];
+        
+        var circleLayers = [
+        { species: 'orca', name: 'Killer Whale', color: '#66C5CC', type: 'circle' },
+        { species: 'novaeangliae', name: 'Humpback Whale', color: '#F6CF71', type: 'circle' },
+        { species: 'edeni', name: "Bryde's Whale", color: '#F89C74', type: 'circle' },
+        { species: 'borealis', name: 'Sei Whale', color: '#DCB0F2', type: 'circle' },
+        { species: 'acutorostrata', name: 'Minke Whale', color: '#87C55F', type: 'circle' },
+        { species: 'glacialis', name: 'North Atlantic Right Whale', color: '#9EB9F3', type: 'circle' },
+        { species: 'robustus', name: "Gray Whale", color: '#FE88B1', type: 'circle' },
+        { species: 'physalus', name: 'Fin Whale', color: '#C9DB74', type: 'circle' },
+        { species: 'mysticetus', name: 'Bowhead Whale', color: '#8BE0A4', type: 'circle' },
+        { species: 'musculus', name: 'Blue Whale', color: '#B497E7', type: 'circle' },
+        { species: 'macrocephalus', name: 'Sperm Whale', color: '#D3B484', type: 'circle' }
+    ];
+
+
+    fillLayers.forEach(function(layer) {
+    var item = document.createElement('div');
+    item.className = 'legend-item';
+    item.innerHTML = '<div class="legend-color" style="background-color:' + layer.color + '"></div>' +
+                     '<span class="legend-text">' + layer.name + '</span>';
+    legend.appendChild(item);
+    item.addEventListener('click', function() {
+        var mapIframe = document.querySelector('iframe[src="WhaleiFrame.html"]');
+        if (!mapIframe) {
+            console.error("Map iframe not found!");
+            return;
+        }
+        var map = mapIframe.contentWindow.map;
+        if (layer.type === 'fill') { // If it's a fill layer
+            var visibility = map.getLayoutProperty(layer.id, 'visibility');
+            if (visibility === 'visible') {
+                map.setLayoutProperty(layer.id, 'visibility', 'none');
+                item.classList.remove('active');
+            } else {
+                map.setLayoutProperty(layer.id, 'visibility', 'visible');
+                item.classList.add('active');
+            }
+        }
+    });
+});
+
+// Add circles to legend based on species
+    circleLayers.forEach(function(layer) {
+    var item = document.createElement('div');
+    item.className = 'legend-item';
+    item.innerHTML = '<div class="legend-color" style="background-color:' + layer.color + '"></div>' +
+                     '<span class="legend-text">' + layer.name + '</span>';
+    legend.appendChild(item);
+    item.addEventListener('click', function() {
+        var mapIframe = document.querySelector('iframe[src="WhaleiFrame.html"]');
+        if (!mapIframe) {
+            console.error("Map iframe not found!");
+            return;
+        }
+        var map = mapIframe.contentWindow.map;
+        if (layer.type === 'circle') { // If it's a circle layer (whale strandings)
+            var visibility = map.getLayoutProperty(layer.id, 'visibility');
+            if (visibility === 'visible') {
+                map.setLayoutProperty(layer.id, 'visibility', 'none');
+                item.classList.remove('active');
+            } else {
+                map.setLayoutProperty(layer.id, 'visibility', 'visible');
+                item.classList.add('active');
+            }
+        }
+    });
+});
+    </script>
+
+</body>
+
+</html>
