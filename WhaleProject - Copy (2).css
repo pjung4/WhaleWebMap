@@ -1,0 +1,146 @@
+/* Import NOAA font */
+@font-face {
+    font-family: 'Helvetica Neue Condensed';
+    src: url('Helvetica/HelveticaNeue-Condensed.otf') format('opentype');
+    /* You can also specify additional font properties here, such as font-weight and font-style */
+}
+/*Site Header/Title*/
+.site-header {
+  position: absolute; /* Position the header relative to its containing element */
+  top: 2%; /* Position it at the top of its containing element */
+  left: 10px; /* Position it at the left of its containing element */
+  width: 55%; /* Make it take up the full width of its containing element */
+  z-index: 2; /* Ensure it stays above other elements */
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 0;
+  text-align: center;
+}
+
+.site-title {
+  font-size: 3rem;
+  line-height: 4rem;
+  font-family: 'Helvetica Neue Condensed', sans-serif;
+  color: #083381
+}
+
+/*Citations*/
+.citations {
+  position: absolute; /* Position the header relative to its containing element */
+  top: 2%; /* Position it at the top of its containing element */
+  right: 10px; /* Position it at the left of its containing element */
+  width: 20%; /* Make it take up the full width of its containing element */
+  z-index: 2; /* Ensure it stays above other elements */
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 2;
+  text-align: center;
+}
+
+.cite-text {
+  font-size: 1rem;
+  line-height: 0.8rem;
+  font-family: 'Helvetica Neue Condensed', sans-serif;
+  color: #083381
+}
+
+html, body {
+  height: 100%; /* Ensure the html and body elements take up the full viewport height */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+/*.site-main contains everything except the header. On large screens, it fills the remaining height of the window.*/
+.site-main {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 4rem); /* Ensure site-main takes up at least the full viewport height minus header height */
+}
+  /*large screens*/
+}
+@media screen and (min-width: 64em) {
+  .site-main {
+    height: calc(100vh - 4rem);
+  }
+}
+
+.column {
+    flex: 0 0 50%; /* Each column takes up 50% of the available width */
+    padding: 5px; /* Add padding between images */
+    box-sizing: border-box; /* Include padding and border in the total width/height */
+}
+  h4 {
+     color: white;
+     margin-left: 10px;
+     font-family: 'Helvetica Neue Condensed', sans-serif;
+   }
+/*Panel with whale pictures and sounds, image formatting/grid*/
+.descriptionPanel {
+     position: absolute;
+     bottom: 3px;
+     right: 20px;
+     z-index: 2;
+     width: 60%;
+     height: auto;
+     max-height: 90%;
+     background: rgba(240, 240, 240);
+     transition: width 2s, height 2s;
+     overflow: hidden;
+     border-radius: 7px;
+     font-family: 'Helvetica Neue Condensed', sans-serif;
+     color: #083381;
+     padding: 20px; /* Added padding for spacing */
+     box-sizing: border-box;
+   }
+.decriptionPanel img {
+    max-width: 100%; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure images do not have extra space beneath */
+    margin: 0 auto; /* Center images horizontally */
+}
+.image-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* 3 columns */
+    grid-gap: 5px; /* Gap between images */
+    top: 10px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.chevron {
+     position: relative;
+     top: 50%;
+     transform: translateY(-50%);
+     left: 50%;
+     font-size: x-large;
+     color: #083381;
+   }
+.map-container {
+  height: 100%;
+  width: 100%
+  /* large screens*/
+}
+@media screen and (min-width: 64em) {
+  .map-container {
+    height: 100%;
+  }
+}
+iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* On medium screens, if the content area is not open, make the map and sidebar full-height.*/
+@media print, screen and (min-width: 40em) {
+  .site-main:not(.has-content-open) .map-container,
+.site-main:not(.has-content-open) .sidebar {
+    height: calc(100vh - 4rem);
+  }
+}
